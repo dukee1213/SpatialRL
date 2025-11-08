@@ -99,9 +99,6 @@ class SpatialSpreadEnv(ParallelEnv):
             ''' Isolation '''
             # if self.infection_status[i]:
                 # self.mobility[i] = max(0.3, self.mobility[i] - 0.02)
-            ''' REMOVED in train '''
-            # if self.risk_types[i] == 0 and current_Ir >= 30:# self.flag2
-                # self.mobility[i] = 0
             ld = self._local_density(i)
             norm_ld = min(ld/20, 1)
             if np.random.rand() < self.mobility[i]:
@@ -200,27 +197,48 @@ class SpatialSpreadEnv(ParallelEnv):
     def render(self):
         if self.render_mode is None:
             return
+        """Updates the plot in a static window for each timestep."""
         if self.scatter is None or self.timestep == 0:
             self.ax.clear()
-            self.scatter = self.ax.scatter([], [], s=40, edgecolors='none')  
+            self.scatter = self.ax.scatter([], [], s=20, edgecolors='none') 
             self.ax.set_xlim(0, self.side_len)
             self.ax.set_ylim(0, self.side_len)
-            self.ax.set_xticks(range(0, self.side_len + 1, int(self.side_len // 5)))
-            self.ax.set_yticks(range(0, self.side_len + 1, int(self.side_len // 5)))
-            self.ax.tick_params(axis='both', labelsize=14)
+            self.ax.set_xticks([])  
+            self.ax.set_yticks([]) 
+            self.text = self.ax.figure.text(0.13, 0.08, '', fontsize=12, color='black')
+            self.text_infection = self.ax.figure.text(0.13, 0.04, '', fontsize=12, color='black')
+            self.text_carefulness = self.ax.figure.text(0.45, 0.04, '', fontsize=12, color='black')
+            self.text_mobility = self.ax.figure.text(0.76, 0.04, '', fontsize=8, color='grey')
             if self.render_mode in ('human'):
-                plt.ion()
+                plt.ion()  
                 plt.show()
+
         colors = np.where(self.infection_status, 'orangered', 'cornflowerblue')
-        self.scatter.set_offsets(self.position)
-        self.scatter.set_facecolor(colors)
-        self.scatter.set_sizes(np.full(self.num_agents, 40)) 
-        collected_steps = [1, 10, 50, 150, 200, 300]
-        if self.timestep in collected_steps:
-            self.ax.set_xlabel(f"t = {self.timestep}", fontsize=16, fontstyle='italic')
-            self.ax.set_ylabel("")  # remove infection label
-            plt.savefig(f"Fig_I_{self.timestep}.png", dpi=300, bbox_inches='tight')
-        if self.render_mode in ('human'):
+        self.scatter.set_offsets(self.position) 
+        self.scatter.set_facecolor(colors) #
+        self.scatter.set_sizes(np.full(self.num_agents, 20))
+        if self.timestep % 10 == 0:
+            infection_rate = np.mean(self.infection_status) * 100
+            infected_carefulness = np.mean(self.carefulness[self.infection_status]) if np.any(self.infection_status) else 0
+            susceptible_carefulness = np.mean(self.carefulness[~self.infection_status]) if np.any(~self.infection_status) else 0
+            
+            self.text.set_text(f'Current Timestep: {self.timestep}')
+            self.text_infection.set_text(f'Infection: {infection_rate:.1f}%')
+            self.text_carefulness.set_text(f'I avg carefulness:  {infected_carefulness:.2f}\nS avg carefulness: {susceptible_carefulness:.2f}')
+            low_mob   = np.mean(self.mobility[self.risk_types == 0])
+            high_mob   = np.mean(self.mobility[self.risk_types == 1])
+            med_mob  = np.mean(self.mobility[self.risk_types == 2])
+            self.text_mobility.set_text(
+                f'Averse mob:  {low_mob:.2f}\n'
+                f'Neutral mob:  {med_mob:.2f}\n'
+                f'Seek mob: {high_mob:.2f}'
+            )
+        if self.render_mode == 'mp4':
+            if not hasattr(self, 'writer'):
+                self.writer = FFMpegWriter(fps=15)
+                self.writer.setup(self.fig, "output.mp4", dpi=100)
+            self.writer.grab_frame()
+        elif self.render_mode in ('human'):
             plt.pause(0.08)
     
     @functools.lru_cache(maxsize=None)
