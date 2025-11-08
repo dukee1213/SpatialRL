@@ -1,13 +1,14 @@
-# Spatial Multi-Agent Reinforcement Learning for Epidemic Control with Heterogeneous Risk Preference (code)
+# Spatial Multi-Agent Reinforcement Learning for Epidemic Control with Heterogeneous Risk Preferences
 
-**(Paper title here)**  
-**Authors:** (Your name, affiliation)
+**Te-Chun Liu and Hsuan-Wei Lee**  
+Department of Information Management, National Taiwan University of Science and Technology, Taiwan  
+College of Health, Lehigh University, USA  
 
-This repository contains the custom multi-agent reinforcement learning (MARL) environment and training scripts used in our study on epidemic-aware interaction and social utility optimization. The environment is implemented in Python on top of **agileRL 2.0.6** and **PettingZoo**, and the experiments correspond to the figures reported in the paper.
+This repository contains the spatial agent-based SIS environment and the multi-agent deep reinforcement learning (MADDPG) training scripts used to study epidemic control under heterogeneous risk preferences. The code implements decentralized policy learning on top of **agileRL 2.0.6** and **PettingZoo**, and reproduces the experiments and figures described in the manuscript.
 
-> **Note**: model checkpoints and large result spreadsheets are not included in this public repo. Please refer to the link below for pretrained models.
+> **Note:** Trained checkpoints and large result spreadsheets are not included in this repository. Pretrained models can be downloaded from the link provided below or requested from the authors.
 
----
+
 
 ## Prerequisites (WSL2 + mini Conda)
 First, set up WSL2 and a GPU-enabled PyTorch environment.
@@ -18,7 +19,7 @@ First, set up WSL2 and a GPU-enabled PyTorch environment.
 
 We assume you are inside WSL2 and have `conda` available.
 
-## Necessary Setup
+### Necessary Setup
 
 Create the env like this:
 ```bash
@@ -80,3 +81,41 @@ To reproduce the paper’s figures:
 - Please star the repo if you find it useful.
 
 - Future: add Dockerfile, support for other multi-agent RL algorithms.
+
+## Citation
+
+If you use this code or framework in your research, please cite:
+
+```bibtex
+@article{liu2025spatialmarl,
+  title   = {Spatial Multi-Agent Reinforcement Learning for Epidemic Control with Heterogeneous Risk Preferences},
+  author  = {Liu, Te-Chun and Lee, Hsuan-Wei},
+  journal = {Computers in Biology and Medicine},
+  year    = {2025},
+  note    = {Manuscript in preparation}
+}
+```
+
+## License
+
+**MIT License**
+
+Copyright (c) 2025 Te-Chun Liu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to deal  
+in the Software without restriction, including without limitation the rights  
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
+copies of the Software, and to permit persons to whom the Software is  
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all  
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
+SOFTWARE.
