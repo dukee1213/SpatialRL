@@ -6,6 +6,9 @@ College of Health, Lehigh University, USA
 
 This repository contains the spatial agent-based SIS environment and the multi-agent deep reinforcement learning (MADDPG) training scripts used to study epidemic control under heterogeneous risk preferences. The code implements decentralized policy learning on top of **agileRL 2.0.6** and **PettingZoo**, and reproduces the experiments and figures described in the manuscript.
 
+![System Overview](figs/Diagram.png)
+*Figure: Overview of the spatial multi-agent RL environment and training pipeline.*
+
 > **Note:** Trained checkpoints and large result spreadsheets are not included in this repository. Pretrained models can be downloaded from the link provided below or requested from the authors.
 
 
@@ -71,6 +74,9 @@ To inspect environment variables (rewards, disease cost, infection rate, timeste
 `custom-environment/env/env_v1.py`
 
 To reproduce the paper’s figures:
+![Epidemic Control Results](figs/Fig1.png)
+*Figure 1: Comparison of infection dynamics and policy outcomes across different agent risk types.*
+
 - edit / run `Inference.py` or `Inference_As.py` (used for Fig. IV, Fig. V, etc.)
 - or run the `Visualization.ipynb` using the data under `result/`
 
