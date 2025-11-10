@@ -74,7 +74,8 @@ To inspect environment variables (rewards, disease cost, infection rate, timeste
 `custom-environment/env/env_v1.py`
 
 To reproduce the paper’s figures:
-![Epidemic Control Results](figs/Fig1.png)
+
+![Epidemic Control Results](figs/Fig_1.png)
 *Figure 1: Comparison of infection dynamics and policy outcomes across different agent risk types.*
 
 - edit / run `Inference.py` or `Inference_As.py` (used for Fig. IV, Fig. V, etc.)
