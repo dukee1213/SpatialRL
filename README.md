@@ -9,8 +9,20 @@ This repository contains the spatial agent-based SIS environment and the multi-a
 ![System Overview](figs/Diagram.png)
 *Figure: Overview of the spatial multi-agent RL environment and training pipeline.*
 
+<table>
+  <tr>
+    <td width="50%">
+      <img src="figs/demo.gif" alt="Epidemic Control Demo">
+    </td>
+    <td width="50%" valign="top">
+      
 > **Note:** Trained checkpoints and large result spreadsheets are not included in this repository. Pretrained models can be downloaded from the link provided below or requested from the authors.
 
+> **Reminder:** This demo (`figs/demo.gif`) is from early experiments; agent behavior may not reflect the latest results. It is provided for demonstration purposes only.
+
+    </td>
+  </tr>
+</table>
 
 
 ## Prerequisites (WSL2 + mini Conda)
