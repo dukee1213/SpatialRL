@@ -20,7 +20,7 @@ This repository contains the spatial agent-based SIS environment and the multi-a
 
 > **Reminder:** This demo (`figs/demo.gif`) is from early experiments; agent behavior may not reflect the latest results. It is provided for demonstration purposes only.
 
-    </td>
+</td>
   </tr>
 </table>
 
