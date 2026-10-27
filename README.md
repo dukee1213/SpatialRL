@@ -4,6 +4,8 @@
 Department of Information Management, National Taiwan University of Science and Technology, Taiwan  
 College of Health, Lehigh University, USA  
 
+> **Publication update (October 2026):** Our manuscript has been accepted for publication in *Artificial Intelligence in Medicine*. The accepted manuscript following major revision is available [here](https://www.dropbox.com/scl/fi/1281j7kkcgwvz0j8z1u1w/ms_revised_clean.pdf?rlkey=9q64ssosd23woxnhe6c8nfyuk&st=mnz632gq&dl=0).
+
 This repository contains the spatial agent-based SIS environment and the multi-agent deep reinforcement learning (MADDPG) training scripts used to study epidemic control under heterogeneous risk preferences. The code implements decentralized policy learning on top of **agileRL 2.0.6** and **PettingZoo**, and reproduces the experiments and figures described in the manuscript.
 
 ![System Overview](figs/Diagram.png)
@@ -68,7 +70,7 @@ Optionally specify a checkpoint:
 ```bash
 python3 Inference.py --ckptpath models/MADDPG/MADDPG_trained_agent.pt
 ```
-Pretrained [weights](https://drive.google.com/drive/folders/19BLmB27GP_XQCgeG8sFiW96_cyWIhMwJ?usp=sharing):
+Pretrained [weights](https://drive.google.com/drive/folders/1aOWlTT01eSnfukA9LlXeCTSJ-rCbxKDF?usp=sharing):
 ```bash
 gdown --id 1mKkZu0Qe1PMNrO0D0Ni_eV15M2cRdlXq -O models/MADDPG/MADDPG_trained_agent.pt
 ```
@@ -106,12 +108,12 @@ To reproduce the paper’s figures:
 If you use this code or framework in your research, please cite:
 
 ```bibtex
-@article{liu2025spatialmarl,
+@article{liu2026spatialmarl,
   title   = {Spatial Multi-Agent Reinforcement Learning for Epidemic Control with Heterogeneous Risk Preferences},
   author  = {Liu, Te-Chun and Lee, Hsuan-Wei},
-  journal = {Computers in Biology and Medicine},
-  year    = {2025},
-  note    = {Manuscript in preparation}
+  journal = {Artificial Intelligence in Medicine},
+  year    = {2026},
+  note    = {Accepted for publication}
 }
 ```
 
